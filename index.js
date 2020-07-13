@@ -495,8 +495,10 @@ function generateCarouselTemplateProperty (text, result) {
     }
 
     let arr = []
+    let length = result.length > 10 ? 9 : result.length
+    for (let index = 0; index < length; index++ ) {
+        let element = result[index]
 
-    result.forEach(function(element, i) {
         let flexContent = {
             'hero': {
                 'url': 'https://www.supalai.com/media/project_home_ads_gallery/168/6_cover.jpg?1532503426',
@@ -582,8 +584,7 @@ function generateCarouselTemplateProperty (text, result) {
         }
 
         arr.push(flexContent)
-
-    });
+    }
 
     let template = [];
 
