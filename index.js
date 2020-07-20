@@ -341,8 +341,8 @@ const handleText = async (sender, data) => {
                 }
             ]
         }
-    } else if (data.text.includes('คอนโด')) {
-        let condoName = data.text.replace('คอนโด', '').trim();
+    } else if ((data.text).includes('คอนโด')) {
+        let condoName = (data.text).replace('คอนโด', '').trim();
         const body = {
             name: condoName,
             type: 'rent',
