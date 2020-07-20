@@ -478,7 +478,7 @@ function generateCarouselTemplateProperty (text, result) {
         }
 
         return responsePayload
-    } else if ((result.message).includes('not found homes') === 0 && text.includes('ผลลัพธ์การเช็คราคาค่าเช่าคอนโด')) {
+    } else if ((result.message).includes('not found homes') && text.includes('ผลลัพธ์การเช็คราคาค่าเช่าคอนโด')) {
         responsePayload = {
             type: 'text',
             text: `ไม่พบผลลัพท์ที่ต้องการหา กรุณาพิมพ์ชื่อคอนโดใหม่`
