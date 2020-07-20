@@ -427,7 +427,7 @@ const findByRate = async (rate) => {
 
     const result = await post(API_BACKEND.SEARCH, body)
     const template = generateCarouselTemplateProperty('ผลลัพธ์การค้นหาโดยราคา', result)
-
+console.log('result = ',result)
     return template
 
 }
@@ -460,7 +460,7 @@ const _fetchData = async (method, url, data, headers = {}) => {
 
 function generateCarouselTemplateProperty (text, result) {
     let responsePayload
-    if (result.length === 0 && text.includes('ผลลัพธ์การค้นหาโดยตำแหน่งที่ตั้ง')) {
+    if ((result.message).includes('not found homes') && text.includes('ผลลัพธ์การค้นหาโดยตำแหน่งที่ตั้ง')) {
         responsePayload = {
             'text': 'ไม่พบคอนโดในบริเวณใกล้เคียง กรุณาแชร์โลเคชั่นใหม่ค่ะ',
             'quickReply': {
@@ -478,14 +478,14 @@ function generateCarouselTemplateProperty (text, result) {
         }
 
         return responsePayload
-    } else if (result.length === 0 && text.includes('ผลลัพธ์การเช็คราคาค่าเช่าคอนโด')) {
+    } else if ((result.message).includes('not found homes') === 0 && text.includes('ผลลัพธ์การเช็คราคาค่าเช่าคอนโด')) {
         responsePayload = {
             type: 'text',
             text: `ไม่พบผลลัพท์ที่ต้องการหา กรุณาพิมพ์ชื่อคอนโดใหม่`
         }
 
         return responsePayload
-    } else if (result.length === 0 && text.includes('ผลลัพธ์การค้นหาโดยราคา')) {
+    } else if ((result.message).includes('not found homes') && text.includes('ผลลัพธ์การค้นหาโดยราคา')) {
         responsePayload = {
             type: 'text',
             text: `ไม่พบผลลัพท์ที่ต้องการหา กรุณาเลือกช่วงราคาใหม่`
